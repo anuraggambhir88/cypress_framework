@@ -1,0 +1,41 @@
+{
+  "name": "cypress_framework_1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "regression-headed-chrome": "cypress run --headed  --browser chrome --spec 'cypress/e2e/*.feature'",
+    "smoke-headed-chrome": "cypress run --headed  --browser chrome -e TAGS=\"@smoke\" && node cucumber-html-report.js"
+  },
+  "author": "anurag",
+  "license": "ISC",
+  "devDependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^15.1.5",
+    "@bahmutov/cypress-esbuild-preprocessor": "^2.2.0",
+    "cypress": "^12.8.1",
+    "cypress-cucumber-attach-screenshots-to-failed-steps": "^1.0.0",
+    "cypress-xpath": "^2.0.1",
+    "ts-loader": "^9.4.2",
+    "typescript": "^5.0.2"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": "cypress/support/step_definitions/**/*.js",
+    "html": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-html/cucumber-report.html"
+    },
+    "messages": {
+      "enabled": true,
+      "output": "cypress/reports/cucumber-ndjson/cucumber-report.ndjson"
+    },
+    "json": {
+      "enabled": true,
+      "formatter": "cucumber-json-formatter",
+      "output": "cypress/reports/cucumber-json/cucumber-report.json"
+    }
+  },
+  "dependencies": {
+    "multiple-cucumber-html-reporter": "^3.3.0"
+  }
+}
